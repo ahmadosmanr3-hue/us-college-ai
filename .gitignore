@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.zip
+*.rar
+*.7z
+
+# Environment Variables
+.env
+.env.production
+.env.development
+.env.local
