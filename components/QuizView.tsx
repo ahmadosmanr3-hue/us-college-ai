@@ -21,8 +21,18 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
 
   // Calculate score based on all answers
   const score = useMemo(() => {
-    return answers.reduce((acc, ans, idx) => {
-      if (ans === questions[idx].correctAnswer) return acc + 1;
+    // Filter out null answers to ensure type safety
+    const validAnswers = answers.filter((a): a is number => a !== null);
+
+    return answers.reduce<number>((acc, ans, idx) => {
+      // If answer is null, skip it (though logic below handles it)
+      if (ans === null) return acc;
+
+      const currentQuestion = questions[idx];
+      // Ensure question exists and check answer
+      if (currentQuestion && ans === currentQuestion.correctAnswer) {
+        return acc + 1;
+      }
       return acc;
     }, 0);
   }, [answers, questions]);
@@ -78,13 +88,13 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-                  borderRadius: '12px', 
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '12px',
                   border: 'none',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                }} 
+                }}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -103,7 +113,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
           </div>
         </div>
 
-        <button 
+        <button
           onClick={onBack}
           className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition-all"
         >
@@ -124,8 +134,8 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
         <div className="flex flex-col items-end">
           <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">Question {currentIndex + 1} of {questions.length}</span>
           <div className="w-32 h-2 bg-gray-100 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
-            <div 
-              className="h-full bg-indigo-600 dark:bg-indigo-500 transition-all duration-300" 
+            <div
+              className="h-full bg-indigo-600 dark:bg-indigo-500 transition-all duration-300"
               style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
             ></div>
           </div>
@@ -205,7 +215,7 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
 
       <div className="flex gap-4">
         {currentIndex > 0 && (
-          <button 
+          <button
             onClick={prevQuestion}
             className="flex-1 flex justify-center items-center gap-2 py-4 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-slate-700 transition-all shadow-sm active:scale-[0.98]"
           >
@@ -213,9 +223,9 @@ export const QuizView: React.FC<QuizViewProps> = ({ questions, onBack }) => {
             Previous
           </button>
         )}
-        
+
         {isAnswered && (
-          <button 
+          <button
             onClick={nextQuestion}
             className="flex-[2] flex justify-center items-center gap-2 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/20 active:scale-[0.98]"
           >
