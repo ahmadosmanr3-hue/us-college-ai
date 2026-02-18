@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> ba85dc0 (Initial commit: AI Study App)
 # Dependencies
 node_modules/
 dist/
@@ -21,20 +17,13 @@ dist-ssr/
 .DS_Store
 Thumbs.db
 
-<<<<<<< HEAD
 # Project specific
 *.zip
 *.rar
 *.7z
 
-=======
->>>>>>> ba85dc0 (Initial commit: AI Study App)
 # Environment Variables
 .env
 .env.production
 .env.development
-<<<<<<< HEAD
 .env.local
-=======
->>>>>>> ba85dc0 (Initial commit: AI Study App)
-.vercel
