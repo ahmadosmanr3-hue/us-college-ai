@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba85dc0 (Initial commit: AI Study App)
 {
   "name": "US COLLEGE AI STUDY HELPER",
   "description": "An AI-powered study companion that transforms PDF textbooks and notes into interactive flashcards and comprehensive quizzes using Gemini 3.",

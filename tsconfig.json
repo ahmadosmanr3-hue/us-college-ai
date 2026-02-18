@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba85dc0 (Initial commit: AI Study App)
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -5,7 +9,11 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
+<<<<<<< HEAD
     "esModuleInterop": true,
+=======
+    "esModuleInterop": false,
+>>>>>>> ba85dc0 (Initial commit: AI Study App)
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,8 +22,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+<<<<<<< HEAD
     "jsx": "react-jsx"
   },
   "include": ["."],
   "exclude": ["node_modules", "dist"]
 }
+=======
+    "jsx": "react-alpha"
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}
+>>>>>>> ba85dc0 (Initial commit: AI Study App)
